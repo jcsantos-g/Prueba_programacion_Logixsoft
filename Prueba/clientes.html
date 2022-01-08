@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Clientes</title>
+    <!-- Sidebar CSS -->
+    <link href="css/sidebar.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome libreria -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Contenedor de pagina -->
+    <div class="d-flex" id="wrapper">
+      <!-- Inicia Sidebar-->
+      <div class="border-0 bg-dark" id="sidebar-wrapper">
+        <!-- Logo de sidebar -->
+        <div class="centrar">
+          <img src="img/logoipsum-logo-11.svg" alt="" class="img-fluid py-4" />
+        </div>
+        <!-- Lista de opciones de sidebar -->
+        <ul class="list-group list-group-flush bg-dark">
+          <a
+            href="mapaConPuntos.html"
+            class="list-group-item list-group-item-action"
+            aria-current="true"
+          >
+            <span class="fa-solid fa-map-location-dot text-white mx-2"></span
+            >Mapa de clientes
+          </a>
+          <a
+            href="clientes.html"
+            class="list-group-item list-group-item-action active"
+            aria-current="true"
+          >
+            <span class="fa-solid fa-user-group text-white mx-2"></span>Clientes
+          </a>
+          <a
+            href="mapaDeCalor.html"
+            class="list-group-item list-group-item-action"
+            aria-current="true"
+          >
+            <span class="fa-solid fa-map text-white mx-2"></span>Mapa de calor
+          </a>
+        </ul>
+      </div>
+      <!-- Termina Sidebar -->
+
+      <!-- Contenido de pagina-->
+      <div id="page-content-wrapper">
+        <!-- Navbar superior -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
+          <div class="container-fluid">
+            <!-- Boton para abrir y cerrar sidebar -->
+            <button
+              class="btn btn-sm btn btn-outline-secondary"
+              id="sidebarToggle"
+              onclick="cambiarIcono()"
+            >
+              <i id="icon" class="fa-solid fa-angle-left text-white"></i>
+            </button>
+            <!-- Opcion Salir de navbar -->
+            <ul class="nav justify-content-end">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="index.html">
+                  <span class="fa-solid fa-sign-out-alt mx-1"></span>Salir</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- Termina Navbar Superior -->
+
+        <!-- Contenedor de tabla clientes-->
+        <div class="container-fluid">
+          <!-- Titulo -->
+          <h1 class="mt-4 text-center">Clientes</h1>
+          <div class="container">
+            <!-- Fila de buscador y btn agregar -->
+            <div class="row">
+              <div class="col-6">
+                <div class="input-group rounded">
+                  <input
+                    type="search"
+                    class="form-control rounded"
+                    placeholder="Buscar..."
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                  />
+                  <span
+                    class="input-group-text border-0 bg-white"
+                    id="search-addon"
+                  >
+                    <i class="fa-solid fa-search"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <button
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  <i class="fas fa-plus-circle"></i
+                  ><span class="ms-2">Agregar</span>
+                </button>
+              </div>
+            </div>
+            <!-- Inicia la tabla -->
+            <div class="table-responsive">
+              <table class="table table-bordered mt-5">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Latitud</th>
+                    <th scope="col">Longitud</th>
+                    <th scope="col" class="text-center">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Avianca</td>
+                    <td>13.705243</td>
+                    <td>-89.24231</td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-sm btn-primary mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEditar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Editar"
+                      >
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-danger mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEliminar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Eliminar"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Grupo Bimbo</td>
+                    <td>13.696674</td>
+                    <td>-89.197927</td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-sm btn-primary mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEditar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Editar"
+                      >
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-danger mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEliminar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Eliminar"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Walmart</td>
+                    <td>14.692511</td>
+                    <td>-87.86136</td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-sm btn-primary mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEditar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Editar"
+                      >
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-danger mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEliminar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Eliminar"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Ternova</td>
+                    <td>12.022747</td>
+                    <td>-86.252007</td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-sm btn-primary mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEditar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Editar"
+                      >
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-danger mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEliminar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Eliminar"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Movistar</td>
+                    <td>8.103289</td>
+                    <td>-80.596013</td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-sm btn-primary mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEditar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Editar"
+                      >
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-danger mx-1 my-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEliminar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Eliminar"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- Termina la tabla -->
+            <!-- Inicia barra de paginacion -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link">Anterior</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link text-white" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link text-dark" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link text-dark" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link text-dark" href="#">Siguiente</a>
+                </li>
+              </ul>
+            </nav>
+            <!-- termina barra de paginacion -->
+          </div>
+        </div>
+        <!-- Termina contenedor de tabla clientes -->
+      </div>
+      <!-- Termina contenedor -->
+    </div>
+
+    <!-- Modal Agregar Cliente-->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Agregar nuevo cliente
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Formulario de agregar cliente -->
+            <form>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" />
+              </div>
+              <div class="mb-3">
+                <label for="lat" class="form-label">Latitud</label>
+                <input type="text" class="form-control" id="lat" />
+              </div>
+              <div class="mb-3">
+                <label for="long" class="form-label">Longitud</label>
+                <input type="text" class="form-control" id="long" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina modal agregar cliente -->
+    <!-- Modal editar Cliente-->
+    <div
+      class="modal fade"
+      id="modalEditar"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar cliente</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Formulario con datos del cliente -->
+            <form>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  placeholder="Avianca"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="lat" class="form-label">Latitud</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lat"
+                  placeholder="13.705243"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="long" class="form-label">Longitud</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="long"
+                  placeholder="-89.24231"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina modal editar cliente -->
+    <!-- Modal eliminar Cliente-->
+    <div
+      class="modal fade"
+      id="modalEliminar"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Eliminar cliente</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Contenido del modal -->
+            <h5 class="text-center">
+              ¿Desea eliminar el cliente: <strong>Avianca</strong>?
+            </h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Termina modal eliminar cliente -->
+    <!-- Bootstrap unido Popper JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Sidebar JS-->
+    <script src="js/sidebar.js"></script>
+  </body>
+</html>
